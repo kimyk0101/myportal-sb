@@ -1,9 +1,11 @@
 package himedia.myportal;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("himedia.myportal.mappers")
 public class MyportalSbApplication {
 
 	public static void main(String[] args) {
