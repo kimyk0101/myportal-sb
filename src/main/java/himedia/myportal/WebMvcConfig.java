@@ -2,6 +2,7 @@ package himedia.myportal;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import himedia.myportal.interceptors.AuthInterceptor;
@@ -24,5 +25,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 			.addPathPatterns("/board/**")
 			.excludePathPatterns("/board", "/board/", "/board/list");
 	}
+
+	//	정적 자원 Mapping
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/upload-images/**")
+			.addResourceLocations("file:/c:/uploads/");
+	}
+	
+	
 
 }
