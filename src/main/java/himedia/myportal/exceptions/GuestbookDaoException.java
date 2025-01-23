@@ -15,9 +15,9 @@ public class GuestbookDaoException
 	}
 	
 	public GuestbookDaoException(String message,
-			GuestbookVo vo) {
+			GuestbookVo guestbookVo) {
 		super(message);
-		this.guestbookVo = vo;
+		this.guestbookVo = guestbookVo;
 	}
 
 	public GuestbookVo getGuestbookVo() {

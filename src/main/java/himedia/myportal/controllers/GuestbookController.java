@@ -19,6 +19,7 @@ import himedia.myportal.services.GuestbookService;
 @Controller
 @RequestMapping("/guestbook")
 public class GuestbookController {
+	private static final Logger logger = LoggerFactory.getLogger(GuestbookController.class);
 	
 	@Autowired
 	GuestbookService guestbookServiceImpl;
@@ -27,15 +28,18 @@ public class GuestbookController {
 	public String list(Model model) {
 		List<GuestbookVo> list = guestbookServiceImpl.getMessageList();
 		model.addAttribute("list", list);
+		
 		return "guestbook/list";
 	}
 	
 	@PostMapping("/write")
-	public String write(@ModelAttribute GuestbookVo vo) {
-		System.out.println("FORM:" + vo);
-		boolean success = guestbookServiceImpl.writeMessage(vo);
+	public String write(@ModelAttribute GuestbookVo guestbookVo) {
+//		System.out.println("FORM:" + guestbookVo);
+		logger.debug("FORM:" + guestbookVo);
+		boolean success = guestbookServiceImpl.writeMessage(guestbookVo);
 		
-		System.out.println("Write Result:" + success);
+//		System.out.println("Write Result:" + success);
+		logger.debug("Write Result:" + success);
 		return "redirect:/guestbook";
 	}
 	
@@ -47,9 +51,10 @@ public class GuestbookController {
 	}
 	
 	@PostMapping("/delete")
-	public String deleteAction(@ModelAttribute GuestbookVo vo) {
-		boolean success = guestbookServiceImpl.deleteMessage(vo);
-		System.out.println("Delete Result:" + success);
+	public String deleteAction(@ModelAttribute GuestbookVo guestbookVo) {
+		boolean success = guestbookServiceImpl.deleteMessage(guestbookVo);
+//		System.out.println("Delete Result:" + success);
+		logger.debug("Delete Result:" + success);
 		
 		return "redirect:/guestbook";
 	}

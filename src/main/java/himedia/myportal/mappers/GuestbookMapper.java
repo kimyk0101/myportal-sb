@@ -12,8 +12,8 @@ public interface GuestbookMapper {
 	List<GuestbookVo> selectAll();
 	
 //	<insert id="insert" parameterType="guestbookVo">
-	int insert(GuestbookVo vo);
+	int insert(GuestbookVo guestbookVo);
 	
 //	<delete id="delete" parameterType="guestbookVo">
-	int delete(GuestbookVo vo);
+	int delete(GuestbookVo guestbookVo);
 }

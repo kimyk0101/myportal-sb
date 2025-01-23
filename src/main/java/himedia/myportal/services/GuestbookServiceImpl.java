@@ -16,21 +16,24 @@ public class GuestbookServiceImpl
 	
 	@Override
 	public List<GuestbookVo> getMessageList() {
-		List<GuestbookVo> list =
-				guestbookDaoImpl.selectAll();
+		List<GuestbookVo> list = guestbookDaoImpl.selectAll();
 		return list;
 	}
 
 	@Override
-	public boolean writeMessage(GuestbookVo vo) {
-		int insertedCount = guestbookDaoImpl.insert(vo);
-		return 1 == insertedCount;
+	public boolean writeMessage(GuestbookVo guestbookVo) {
+//		int insertedCount = guestbookDaoImpl.insert(guestbookVo);
+//		return 1 == insertedCount;
+		
+		return 1 == guestbookDaoImpl.insert(guestbookVo);
 	}
 
 	@Override
-	public boolean deleteMessage(GuestbookVo vo) {
-		int deletedCount = guestbookDaoImpl.delete(vo);
-		return 1 == deletedCount;
+	public boolean deleteMessage(GuestbookVo guestbookVo) {
+//		int deletedCount = guestbookDaoImpl.delete(guestbookVo);
+//		return 1 == deletedCount;
+		
+		return 1 == guestbookDaoImpl.delete(guestbookVo);
 	}
 	
 }
