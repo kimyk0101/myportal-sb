@@ -21,18 +21,12 @@ public class GuestbookServiceImpl
 	}
 
 	@Override
-	public boolean writeMessage(GuestbookVo guestbookVo) {
-//		int insertedCount = guestbookDaoImpl.insert(guestbookVo);
-//		return 1 == insertedCount;
-		
+	public boolean writeMessage(GuestbookVo guestbookVo) {	
 		return 1 == guestbookDaoImpl.insert(guestbookVo);
 	}
 
 	@Override
-	public boolean deleteMessage(GuestbookVo guestbookVo) {
-//		int deletedCount = guestbookDaoImpl.delete(guestbookVo);
-//		return 1 == deletedCount;
-		
+	public boolean deleteMessage(GuestbookVo guestbookVo) {	
 		return 1 == guestbookDaoImpl.delete(guestbookVo);
 	}
 	

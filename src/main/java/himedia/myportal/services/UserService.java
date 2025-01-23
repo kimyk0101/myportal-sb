@@ -5,8 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public interface UserService {
 	public boolean join(UserVo vo);
-	public UserVo getUser(String email, String password);
 	public UserVo getUser(String email);
-	
+	public UserVo getUser(String email, String password);
 	public boolean isAuthenticated(HttpServletRequest request);
 }

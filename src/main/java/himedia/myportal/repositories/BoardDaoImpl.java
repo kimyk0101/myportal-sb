@@ -33,18 +33,11 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public BoardVo getContent(Integer no) {
-//		boardMapper.update(no);
-//		BoardVo boardVo = boardMapper.getContent(no);
-//		return boardVo;
-		
 		return boardMapper.getContent(no);
 	}
 
 	@Override
 	public int update(BoardVo boardVo) {
-//		int updatedCount = boardMapper.update(boardVo);
-//		return updatedCount;
-		
 		return boardMapper.update(boardVo);
 	}
 

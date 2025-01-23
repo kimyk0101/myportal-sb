@@ -21,30 +21,21 @@ public class GuestbookDaoImpl implements GuestbookDao {
 	}
 
 	@Override
-	public int insert(GuestbookVo guestbookVo) {
-//		int insertedCount = 0;
-		
+	public int insert(GuestbookVo guestbookVo) {	
 		try { 
-//			insertedCount = guestbookMapper.insert(guestbookVo);
 			return guestbookMapper.insert(guestbookVo);
 		} catch (Exception e) {
 			throw new GuestbookDaoException("방명록 기록 중 에러 발생", guestbookVo);
 		}
-		
-//		return insertedCount;
 	}
 
 	@Override
 	public int delete(GuestbookVo guestbookVo) {
-//		int deletedCount = 0;
-		
 		try {
-//			deletedCount = guestbookMapper.delete(guestbookVo);
 			return guestbookMapper.delete(guestbookVo);
 		} catch (Exception e) {
 			throw new GuestbookDaoException("방명록 삭제 중 에러 발생", guestbookVo);
 		}
-//		return deletedCount;
 	}
 	
 }

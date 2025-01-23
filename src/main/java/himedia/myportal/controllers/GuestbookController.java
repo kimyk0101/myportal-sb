@@ -34,12 +34,11 @@ public class GuestbookController {
 	
 	@PostMapping("/write")
 	public String write(@ModelAttribute GuestbookVo guestbookVo) {
-//		System.out.println("FORM:" + guestbookVo);
 		logger.debug("FORM:" + guestbookVo);
-		boolean success = guestbookServiceImpl.writeMessage(guestbookVo);
 		
-//		System.out.println("Write Result:" + success);
+		boolean success = guestbookServiceImpl.writeMessage(guestbookVo);
 		logger.debug("Write Result:" + success);
+		
 		return "redirect:/guestbook";
 	}
 	
@@ -53,7 +52,6 @@ public class GuestbookController {
 	@PostMapping("/delete")
 	public String deleteAction(@ModelAttribute GuestbookVo guestbookVo) {
 		boolean success = guestbookServiceImpl.deleteMessage(guestbookVo);
-//		System.out.println("Delete Result:" + success);
 		logger.debug("Delete Result:" + success);
 		
 		return "redirect:/guestbook";

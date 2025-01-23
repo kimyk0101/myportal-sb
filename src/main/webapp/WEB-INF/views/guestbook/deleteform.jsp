@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>My Homepage</title>
 <link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/guestbook.css" />
+	href="<c:url value="/css/guestbook.css" />" />
 </head>
 <body>
 	<div id="container">

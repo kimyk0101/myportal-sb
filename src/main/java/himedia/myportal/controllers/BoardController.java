@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import himedia.myportal.repositories.vo.BoardVo;
 import himedia.myportal.repositories.vo.UserVo;
 import himedia.myportal.services.BoardService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/board")
@@ -37,20 +38,17 @@ public class BoardController {
 	public String writeForm() {
 		return "board/write";
 	}
-	/*
+	
 	@PostMapping("/write")
 	public String writeAction(@ModelAttribute BoardVo boardVo, HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		boardVo.setUserNo(authUser.getNo());
-		boardServiceImpl.write(boardVo);
 		
-		return "redirect:/board";
-	}
-	*/
-	@PostMapping("/write")
-	public String writeAction(@ModelAttribute BoardVo boardVo, Model model) {
-		UserVo authUser = (UserVo)model.getAttribute("authUser");
-		boardVo.setUserNo(authUser.getNo());
+		//	로그인을 안하면 받아올 정보가 없음 (authUser == null)
+		//	그래서 null이 아닐 경우에만 정보를 받아오도록 설정
+		if (authUser != null) {
+			boardVo.setUserNo(authUser.getNo());
+		}
+		
 		boardServiceImpl.write(boardVo);
 		
 		return "redirect:/board";
@@ -66,14 +64,13 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{no}/modify")
-//	public String modifyForm(@PathVariable("no") Integer no, Model model, HttpSession session) {
-	public String modifyForm(@PathVariable("no") Integer no, Model model) {
+	public String modifyForm(@PathVariable("no") Integer no, Model model, HttpSession session) {
 		BoardVo boardVo = boardServiceImpl.getContent(no);
 		model.addAttribute("vo", boardVo);
 		
 		return "board/modify";
 	}
-	/*
+	
 	@PostMapping("/modify")
 	public String modify(@ModelAttribute BoardVo updateVo, HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
@@ -91,39 +88,12 @@ public class BoardController {
 		
 		return "redirect:/board";
 	}
-	*/
-	@PostMapping("/modify")
-	public String modify(@ModelAttribute BoardVo updateVo, Model model) {
-		UserVo authUser = (UserVo)model.getAttribute("authUser");
-		BoardVo boardVo = boardServiceImpl.getContent(updateVo.getNo());
-		
-		if (boardVo.getUserNo() != authUser.getNo()) {
-			logger.debug("게시물 작성자 아님!");
-			return "redirect:/board";
-		}
-		
-		boardVo.setTitle(updateVo.getTitle());
-		boardVo.setContent(updateVo.getContent());
-		
-		boolean success = boardServiceImpl.update(boardVo);
-		
-		return "redirect:/board";
-	}
 	
-	/*
 	@GetMapping("/{no}/delete")
 	public String deleteAction(@PathVariable("no") Integer no, HttpSession session) {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");	
 		boardServiceImpl.deleteByNoAndUserNo(no, authUser.getNo());
 		return "redirect:/board/list";
 	}
-	*/
-	@GetMapping("/{no}/delete")
-	public String deleteAction(@PathVariable("no") Integer no, Model model) {
-		UserVo authUser = (UserVo)model.getAttribute("authUser");	
-		boardServiceImpl.deleteByNoAndUserNo(no, authUser.getNo());
-		return "redirect:/board/list";
-	}
-	
 	
 }

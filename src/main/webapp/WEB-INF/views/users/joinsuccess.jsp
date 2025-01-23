@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>가입 성공</title>
-<link type="text/css" rel="stylesheet" href="<%= request.getContextPath() %>/css/users.css"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/users.css" />" />
 </head>
 <body>
 	<h1>회원 가입 성공</h1>

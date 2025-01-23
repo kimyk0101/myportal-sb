@@ -7,7 +7,7 @@
 	<title>My Homepage</title>
 	<link type="text/css" 
 	rel="stylesheet" 
-	href="<%= request.getContextPath() %>/css/board.css"/>
+	href="<c:url value="/css/board.css"/>" />
 </head>
 </head>
 <body>

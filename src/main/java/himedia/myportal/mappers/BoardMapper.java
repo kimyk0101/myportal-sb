@@ -3,8 +3,11 @@ package himedia.myportal.mappers;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import himedia.myportal.repositories.vo.BoardVo;
 
+@Mapper
 public interface BoardMapper {
 //	<select id="selectAll" resultType="boardVo">
 	List<BoardVo> selectAll();

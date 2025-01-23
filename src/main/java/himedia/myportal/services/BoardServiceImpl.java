@@ -19,18 +19,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVo getContent(Integer no) {
-//		BoardVo boardVo = boardDaoImpl.getContent(no);
-//		return boardVo;
-		
+	public BoardVo getContent(Integer no) {	
 		return boardDaoImpl.getContent(no);
 	}
 
 	@Override
-	public boolean write(BoardVo boardVo) {
-//		int insertedCount = boardDaoImpl.insert(boardVo);
-//		return insertedCount == 1;
-		
+	public boolean write(BoardVo boardVo) {	
 		return 1 == boardDaoImpl.insert(boardVo);
 	}
 

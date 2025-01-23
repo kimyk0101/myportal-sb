@@ -38,16 +38,6 @@
 					<br>
 					<form:errors path="name" cssClass="error" />
 					<br />
-					<%-- input type="text" name="name" placeholder="이름을 입력하십시오.">
-					<spring:hasBindErrors name="userVo">
-						<c:if test="${errors.hasFieldErrors('name') }">
-							<strong style="color:red">
-							<spring:message code="${errors.getFieldError('name').codes[0] }" 					
-								text="${errors.getFieldError('name').defaultMessage }" />
-							</strong>
-							<br />
-						</c:if>
-					</spring:hasBindErrors --%>
 
 					<label for="password">비밀번호</label>
 					<form:input type="password" path="password"
@@ -68,8 +58,6 @@
 					<br />
 					<label for="gender">성별</label>
 
-					<!-- form:radiobutton path="gender" value="M" label="남성" checked=checked
-							UserVo와 충돌남 gender의 기본값 설정은 Controller에서 -->
 					<form:radiobutton path="gender" value="M" label="남성" />
 					<form:radiobutton path="gender" value="F" label="여성" />
 					<br>

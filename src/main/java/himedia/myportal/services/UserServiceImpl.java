@@ -19,13 +19,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVo getUser(String email, String password) {
-		return userDaoImpl.selectUser(email, password);
-	}
-
-	@Override
 	public UserVo getUser(String email) {
 		return userDaoImpl.selectUser(email);
+	}
+	
+	@Override
+	public UserVo getUser(String email, String password) {
+		return userDaoImpl.selectUser(email, password);
 	}
 
 	@Override
